@@ -35,6 +35,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/anchor-is-valid": "off",
     "import/extensions": "off",
     "no-console": "off",
     "no-alert": "off",
