@@ -1,0 +1,4 @@
+public/
+*.js
+package.json
+*.json
