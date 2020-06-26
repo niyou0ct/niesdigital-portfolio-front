@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="403" height="420" viewBox="0 0 403 420">
+  <g id="Group_30" data-name="Group 30" transform="translate(-759 -380)">
+    <text id="FOCUS" transform="translate(759 447)" fill="#fff" font-size="72" font-family="Ubuntu-Bold, Ubuntu" font-weight="700" letter-spacing="0.559em"><tspan x="0" y="0">FOCUS</tspan></text>
+    <g id="Group_9" data-name="Group 9" transform="translate(-2 8)">
+      <text id="O" transform="translate(761 552)" fill="#fff" font-size="72" font-family="Ubuntu-Bold, Ubuntu" font-weight="700"><tspan x="0" y="0">O</tspan></text>
+      <text id="N" transform="translate(1109 552)" fill="#fff" font-size="72" font-family="Ubuntu-Bold, Ubuntu" font-weight="700"><tspan x="0" y="0">N</tspan></text>
+    </g>
+    <text id="CORE" transform="translate(759 673)" fill="#fff" font-size="72" font-family="Ubuntu-Bold, Ubuntu" font-weight="700" letter-spacing="0.945em"><tspan x="0" y="0">CORE</tspan></text>
+    <text id="USERS" transform="translate(759 786)" fill="#fff" font-size="72" font-family="Ubuntu-Bold, Ubuntu" font-weight="700" letter-spacing="0.595em"><tspan x="0" y="0">USERS</tspan></text>
+  </g>
+</svg>
