@@ -9,6 +9,7 @@ const IndexPage: NextPage = () => {
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        {/* <meta name="google-site-verification" content="<meta name="google-site-verification" content="2LREya_jJnGvqyKRSVorfdRLNJAog4P9cet6wLh0CBE" />" /> */}
       </Head>
 
       <Header />

@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import LogoWithTag from '../molecules/LogoWithTag'
+import Styles from '../common/Styles'
 
 export type HeaderProps = {
   [key: string]: any
@@ -25,7 +26,7 @@ const Nav = styled.li`
 `
 
 const LinkText = styled.a`
-  font-size: 1.4rem;
+  font-size: ${Styles.font.small};
 `
 
 const Header: React.FC<HeaderProps> = (): JSX.Element => {
