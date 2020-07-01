@@ -2,7 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import LogoWithTag from '../molecules/LogoWithTag'
-import Styles from '../common/Styles'
+import Styles, { device } from '../common/style/Styles'
+import BaseLayout from './BaseLayout'
+import { LayoutSizeEnum } from '../common/style/type'
 
 export type HeaderProps = {
   [key: string]: any
@@ -11,53 +13,67 @@ export type HeaderProps = {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  padding: 16px 15px;
+  padding: 10px 0;
 `
 
 const NavList = styled.ul`
   display: flex;
-  margin-left: 56px;
+  margin-left: ${Styles.margin.medium} !important;
+
+  @media ${device.tablet} {
+    margin-left: ${Styles.margin.exLarge} !important;
+  }
 `
 
 const Nav = styled.li`
   & + & {
-    margin-left: 24px;
+    margin-left: ${Styles.margin.exSmall};
+
+    @media ${device.tablet} {
+      margin-left: ${Styles.margin.small};
+    }
   }
 `
 
 const LinkText = styled.a`
-  font-size: ${Styles.font.small};
+  font-size: ${Styles.font.exSmall};
+
+  @media ${device.tablet} {
+    margin-left: ${Styles.font.small};
+  }
 `
 
 const Header: React.FC<HeaderProps> = (): JSX.Element => {
   return (
-    <Container>
-      <div>
-        <LogoWithTag hasLink />
-      </div>
-      <NavList>
-        <Nav>
-          <Link href="/price">
-            <LinkText>Price</LinkText>
-          </Link>
-        </Nav>
-        <Nav>
-          <Link href="/works">
-            <LinkText>Works</LinkText>
-          </Link>
-        </Nav>
-        <Nav>
-          <Link href="/blog">
-            <LinkText>Blog</LinkText>
-          </Link>
-        </Nav>
-        <Nav>
-          <Link href="/contact">
-            <LinkText>Contact</LinkText>
-          </Link>
-        </Nav>
-      </NavList>
-    </Container>
+    <BaseLayout size={LayoutSizeEnum.LARGE}>
+      <Container>
+        <div>
+          <LogoWithTag hasLink />
+        </div>
+        <NavList>
+          <Nav>
+            <Link href="/price">
+              <LinkText>Price</LinkText>
+            </Link>
+          </Nav>
+          <Nav>
+            <Link href="/works">
+              <LinkText>Works</LinkText>
+            </Link>
+          </Nav>
+          <Nav>
+            <Link href="/blog">
+              <LinkText>Blog</LinkText>
+            </Link>
+          </Nav>
+          <Nav>
+            <Link href="/contact">
+              <LinkText>Contact</LinkText>
+            </Link>
+          </Nav>
+        </NavList>
+      </Container>
+    </BaseLayout>
   )
 }
 

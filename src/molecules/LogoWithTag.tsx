@@ -1,11 +1,21 @@
 import React from 'react'
 import Link from 'next/link'
+import styled from 'styled-components'
 import Image from '../atoms/Image'
+import { device } from '../common/style/Styles'
 
 export type LogoWithTagProps = {
   reverse?: boolean
   hasLink?: boolean
 }
+
+const ImageWrap = styled.div`
+  width: 100%;
+  min-width: 124px;
+  @media ${device.tablet} {
+    min-width: 200px;
+  }
+`
 
 const LogoWithTag: React.FC<LogoWithTagProps> = (
   props: LogoWithTagProps
@@ -15,18 +25,20 @@ const LogoWithTag: React.FC<LogoWithTagProps> = (
 
   if (hasLink) {
     return (
-      <Link href="/">
-        <a>
-          <Image src={srcName} alt="Nii's Digital" />
-        </a>
-      </Link>
+      <ImageWrap>
+        <Link href="/">
+          <a>
+            <Image src={srcName} alt="Nie's Digital" />
+          </a>
+        </Link>
+      </ImageWrap>
     )
   }
 
   return (
-    <div>
-      <Image src={srcName} alt="Nii's Digital" />
-    </div>
+    <ImageWrap>
+      <Image src={srcName} alt="Nie's Digital" />
+    </ImageWrap>
   )
 }
 
