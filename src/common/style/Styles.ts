@@ -26,6 +26,9 @@ const Styles = {
     large: GutterEnum.large,
     exLarge: GutterEnum.exLarge,
     superLarge: GutterEnum.superLarge
+  },
+  border: {
+    radius: '5px'
   }
 }
 

@@ -8,6 +8,12 @@ import Image from '@/atoms/Image'
 import { device } from '@/common/style/Styles'
 import MindSection from '@/organisms/MindSection'
 import ServiceSection from '@/organisms/ServiceSection'
+import PriceSection from '@/organisms/PriceSection'
+import ContentsLayout from '@/organisms/ContentsLayout'
+import { BgColorEnum, GutterEnum } from '@/common/style/type'
+import BaseLayout from '@/organisms/BaseLayout'
+import MarginBottom from '@/atoms/MarginBottom'
+import Profile from '@/organisms/Profile'
 
 const Wrap = styled.div`
   background-color: #000;
@@ -77,7 +83,19 @@ const IndexPage: NextPage = () => {
       <main>
         <MindSection />
         <ValueSection />
-        <ServiceSection />
+
+        <ContentsLayout bgColor={BgColorEnum.GREY}>
+          <BaseLayout>
+            <MarginBottom
+              spSize={GutterEnum.exLarge}
+              pcSize={GutterEnum.superLarge}>
+              <ServiceSection />
+            </MarginBottom>
+            <PriceSection />
+          </BaseLayout>
+        </ContentsLayout>
+
+        <Profile />
       </main>
     </div>
   )

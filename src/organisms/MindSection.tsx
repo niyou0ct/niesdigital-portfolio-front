@@ -7,7 +7,7 @@ import BaseLayout from './BaseLayout'
 import HeadingLayout from '../molecules/HeadingLayout'
 import Image from '../atoms/Image'
 
-const Wrap = styled.div`
+const Wrap = styled.section`
   position: relative;
   padding-bottom: 203px;
 

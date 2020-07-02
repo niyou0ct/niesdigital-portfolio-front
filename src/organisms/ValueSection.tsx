@@ -44,8 +44,10 @@ const ValueSection: React.FC = (): JSX.Element => {
   return (
     <ContentsLayout bgColor={BgColorEnum.BLACK}>
       <BaseLayout>
-        <HeadingLayout color="#6f6f6f">VALUES</HeadingLayout>
-        <div>{valueItemElements}</div>
+        <section>
+          <HeadingLayout color="#6f6f6f">VALUES</HeadingLayout>
+          <div>{valueItemElements}</div>
+        </section>
       </BaseLayout>
     </ContentsLayout>
   )

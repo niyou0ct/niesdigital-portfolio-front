@@ -13,6 +13,7 @@ export type ServiceItemProps = {
 const Wrap = styled.div`
   background-color: #fff;
   padding: 16px;
+  border-radius: ${Styles.border.radius};
 
   @media ${device.tablet} {
     padding: 24px 32px;

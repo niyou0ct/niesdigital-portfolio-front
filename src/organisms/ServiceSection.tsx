@@ -1,14 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BgColorEnum, GutterEnum } from '@/common/style/type'
+import { GutterEnum } from '@/common/style/type'
 import GridItem, { GridItemProps } from '@/molecules/GridItem'
 import ServiceItem, { ServiceItemProps } from '@/molecules/ServiceItem'
-import ContentsLayout from './ContentsLayout'
-import BaseLayout from './BaseLayout'
 import HeadingLayout from '../molecules/HeadingLayout'
 import GridLayout, { GridLayoutProps } from './GridLayout'
 
-const Wrap = styled.div``
+const Wrap = styled.section``
 
 const gridLayoutOptions: GridLayoutProps = {
   marginLeft: {
@@ -63,14 +61,10 @@ const ServiceSection: React.FC = (): JSX.Element => {
     )
   )
   return (
-    <ContentsLayout bgColor={BgColorEnum.GREY}>
-      <BaseLayout>
-        <Wrap>
-          <HeadingLayout>Services</HeadingLayout>
-          <GridLayout {...gridLayoutOptions}>{serviceItemElements}</GridLayout>
-        </Wrap>
-      </BaseLayout>
-    </ContentsLayout>
+    <Wrap>
+      <HeadingLayout>Services</HeadingLayout>
+      <GridLayout {...gridLayoutOptions}>{serviceItemElements}</GridLayout>
+    </Wrap>
   )
 }
 
