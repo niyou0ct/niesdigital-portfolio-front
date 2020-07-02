@@ -14,7 +14,7 @@ const Styles = {
       light: '#f7f7f7',
       medium: '#a3a3a3',
       dark: '#777',
-      darker: '3e3e3e'
+      darker: '#3e3e3e'
     }
   },
   margin: {

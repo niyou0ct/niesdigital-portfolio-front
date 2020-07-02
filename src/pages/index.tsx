@@ -14,6 +14,7 @@ import { BgColorEnum, GutterEnum } from '@/common/style/type'
 import BaseLayout from '@/organisms/BaseLayout'
 import MarginBottom from '@/atoms/MarginBottom'
 import Profile from '@/organisms/Profile'
+import ContactSection from '@/organisms/ContactSection'
 
 const Wrap = styled.div`
   background-color: #000;
@@ -96,6 +97,7 @@ const IndexPage: NextPage = () => {
         </ContentsLayout>
 
         <Profile />
+        <ContactSection />
       </main>
     </div>
   )

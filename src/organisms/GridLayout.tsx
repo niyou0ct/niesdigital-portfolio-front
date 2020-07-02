@@ -19,6 +19,7 @@ const GridLayout: React.FC<GridLayoutProps> = (
   props: GridLayoutProps
 ): JSX.Element => {
   const { marginLeft, marginBottom, children } = props
+
   const Wrap = styled.div`
     display: flex;
     flex-wrap: wrap;
