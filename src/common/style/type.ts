@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/prefer-default-export
 export enum LayoutSizeEnum {
-  SMALL = '812px',
-  MEDIUM = '1088px',
-  LARGE = '1364px'
+  SMALL = 812,
+  MEDIUM = 1088,
+  LARGE = 1364
 }
 
 export enum BgColorEnum {
@@ -11,13 +11,13 @@ export enum BgColorEnum {
   BLACK = '#000'
 }
 
-export enum MarginEnum {
-  superSmall = '8px',
-  exSmall = '16px',
-  small = '24px',
-  medium = '32px',
-  exMedium = '40px',
-  large = '48px',
-  exLarge = '56px',
-  superLarge = '80px'
+export enum GutterEnum {
+  superSmall = 8,
+  exSmall = 16,
+  small = 24,
+  medium = 32,
+  exMedium = 40,
+  large = 48,
+  exLarge = 56,
+  superLarge = 80
 }

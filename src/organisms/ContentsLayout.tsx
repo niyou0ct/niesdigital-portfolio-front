@@ -1,26 +1,33 @@
 import React from 'react'
 import styled from 'styled-components'
-import { MarginEnum } from '../common/style/type'
+import { GutterEnum, BgColorEnum } from '../common/style/type'
 import { device } from '../common/style/Styles'
 
 export type ContentsLayoutProps = {
-  marginBottom?: {
-    sp?: MarginEnum
-    pc?: MarginEnum
+  paddingTop?: {
+    sp: GutterEnum
+    pc: GutterEnum
   }
-  pcMarginBottom?: MarginEnum
+  paddingBottom?: {
+    sp: GutterEnum
+    pc: GutterEnum
+  }
+  bgColor?: BgColorEnum
   children?: React.ReactNode
 }
 
 const ContentsLayout: React.FC<ContentsLayoutProps> = (
   props: ContentsLayoutProps
 ): JSX.Element => {
-  const { marginBottom, children } = props
+  const { paddingTop, paddingBottom, bgColor, children } = props
 
   const Wrap = styled.div`
-    margin-bottom: ${marginBottom?.sp};
+    background-color: ${bgColor};
+    padding-top: ${paddingTop?.sp}px;
+    padding-bottom: ${paddingBottom?.sp}px;
     @media ${device.tablet} {
-      margin-bottom: ${marginBottom?.pc};
+      padding-top: ${paddingTop?.pc}px;
+      padding-bottom: ${paddingBottom?.pc}px;
     }
   `
 
@@ -28,10 +35,15 @@ const ContentsLayout: React.FC<ContentsLayoutProps> = (
 }
 
 ContentsLayout.defaultProps = {
-  marginBottom: {
-    sp: MarginEnum.superLarge,
-    pc: MarginEnum.superLarge
-  }
+  paddingTop: {
+    sp: GutterEnum.superLarge,
+    pc: GutterEnum.superLarge
+  },
+  paddingBottom: {
+    sp: GutterEnum.superLarge,
+    pc: GutterEnum.superLarge
+  },
+  bgColor: BgColorEnum.WHITE
 }
 
 export default ContentsLayout

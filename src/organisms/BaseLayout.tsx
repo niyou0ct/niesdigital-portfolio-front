@@ -1,21 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import { LayoutSizeEnum, BgColorEnum } from '../common/style/type'
+import { LayoutSizeEnum } from '../common/style/type'
 import { device } from '../common/style/Styles'
 
 export type BaseLayoutProps = {
   size?: LayoutSizeEnum
-  bgColor?: BgColorEnum
   children?: React.ReactNode
 }
 
 const BaseLayout: React.FC<BaseLayoutProps> = (
   props: BaseLayoutProps
 ): JSX.Element => {
-  const { size, bgColor, children } = props
+  const { size, children } = props
 
   const Wrap = styled.div`
-    background-color: ${bgColor};
     padding: 0 12px;
 
     @media ${device.tablet} {
@@ -25,7 +23,7 @@ const BaseLayout: React.FC<BaseLayoutProps> = (
 
   const Inner = styled.div`
     width: 100%;
-    max-width: ${size};
+    max-width: ${size}px;
     margin: 0 auto;
   `
 
@@ -37,8 +35,7 @@ const BaseLayout: React.FC<BaseLayoutProps> = (
 }
 
 BaseLayout.defaultProps = {
-  size: LayoutSizeEnum.MEDIUM,
-  bgColor: BgColorEnum.WHITE
+  size: LayoutSizeEnum.MEDIUM
 }
 
 export default BaseLayout

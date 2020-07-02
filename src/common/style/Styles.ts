@@ -1,4 +1,4 @@
-import { LayoutSizeEnum, MarginEnum } from './type'
+import { LayoutSizeEnum, GutterEnum } from './type'
 
 const Styles = {
   font: {
@@ -18,14 +18,14 @@ const Styles = {
     }
   },
   margin: {
-    superSmall: MarginEnum.superSmall,
-    exSmall: MarginEnum.exSmall,
-    small: MarginEnum.small,
-    medium: MarginEnum.medium,
-    exMedium: MarginEnum.exMedium,
-    large: MarginEnum.large,
-    exLarge: MarginEnum.exLarge,
-    superLarge: MarginEnum.superLarge
+    superSmall: GutterEnum.superSmall,
+    exSmall: GutterEnum.exSmall,
+    small: GutterEnum.small,
+    medium: GutterEnum.medium,
+    exMedium: GutterEnum.exMedium,
+    large: GutterEnum.large,
+    exLarge: GutterEnum.exLarge,
+    superLarge: GutterEnum.superLarge
   }
 }
 

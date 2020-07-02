@@ -18,19 +18,19 @@ const Container = styled.div`
 
 const NavList = styled.ul`
   display: flex;
-  margin-left: ${Styles.margin.medium} !important;
+  margin-left: ${Styles.margin.medium}px !important;
 
   @media ${device.tablet} {
-    margin-left: ${Styles.margin.exLarge} !important;
+    margin-left: ${Styles.margin.exLarge}px !important;
   }
 `
 
 const Nav = styled.li`
   & + & {
-    margin-left: ${Styles.margin.exSmall};
+    margin-left: ${Styles.margin.exSmall}px;
 
     @media ${device.tablet} {
-      margin-left: ${Styles.margin.small};
+      margin-left: ${Styles.margin.small}px;
     }
   }
 `
