@@ -23,7 +23,7 @@ const FormBox = styled.div`
   max-width: 536px;
 `
 
-const ImageWrap = styled.div`
+const ImageWrap = styled.span`
   position: absolute;
   top: -102px;
   right: 0;

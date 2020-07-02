@@ -15,6 +15,7 @@ import BaseLayout from '@/organisms/BaseLayout'
 import MarginBottom from '@/atoms/MarginBottom'
 import Profile from '@/organisms/Profile'
 import ContactSection from '@/organisms/ContactSection'
+import Footer from '@/organisms/Footer'
 
 const Wrap = styled.div`
   background-color: #000;
@@ -99,6 +100,7 @@ const IndexPage: NextPage = () => {
         <Profile />
         <ContactSection />
       </main>
+      <Footer />
     </div>
   )
 }
