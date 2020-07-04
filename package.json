@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "prettier:write": "yarn prettier --write ./src/**/*.{ts,tsx}",
     "eslint": "eslint './src/**/*.{ts,tsx}' -c .eslintrc.js --fix",
