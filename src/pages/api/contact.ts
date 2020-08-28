@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import nodemailer from 'nodemailer'
 import { Contact } from '@/models/Contact'
-import * as key from '../../../GSuiteAuth.json'
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -10,8 +9,8 @@ const transporter = nodemailer.createTransport({
   auth: {
     type: 'OAuth2',
     user: process.env.EMAIL_ADDRESS,
-    serviceClient: key.client_id,
-    privateKey: key.private_key
+    serviceClient: process.env.G_SUITE_AUTH_CLIENT_ID,
+    privateKey: process.env.G_SUITE_AUTH_PRIVATE_KEY
   }
 })
 
