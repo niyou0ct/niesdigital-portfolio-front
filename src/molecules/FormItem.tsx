@@ -2,9 +2,11 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import MarginBottom from '@/atoms/MarginBottom'
 import { GutterEnum } from '@/common/style/type'
+import ErrorText from '@/atoms/ErrorText'
 
 export type FormItemProps = {
   title: string
+  errorText?: string
   children?: React.ReactNode
 } & FormItemStyleType
 
@@ -35,10 +37,14 @@ const Title = styled.div`
   font-size: 1.4rem;
 `
 
+const ErrorTextWrap = styled.div`
+  margin-top: 10px;
+`
+
 const FormItem: React.FC<FormItemProps> = (
   props: FormItemProps
 ): JSX.Element => {
-  const { title, maxWidth, children } = props
+  const { title, maxWidth, errorText, children } = props
 
   return (
     <Wrap maxWidth={maxWidth}>
@@ -46,6 +52,11 @@ const FormItem: React.FC<FormItemProps> = (
         <Title>{title}</Title>
       </MarginBottom>
       {children}
+      {errorText && (
+        <ErrorTextWrap>
+          <ErrorText>{errorText}</ErrorText>
+        </ErrorTextWrap>
+      )}
     </Wrap>
   )
 }

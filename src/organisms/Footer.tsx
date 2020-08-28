@@ -21,6 +21,9 @@ const Wrap = styled.div`
 
 const List = styled.ul`
   display: flex;
+  ${customMedia.greaterThan('tablet')`
+    // margin-right: 101px;
+  `}
 `
 const Item = styled.li`
   font-size: 1.4rem;
@@ -42,11 +45,10 @@ const Item = styled.li`
 const IconList = styled.ul`
   display: flex;
   justify-content: flex-end;
-  margin-top: ${GutterEnum.superLarge}px;
+  /* margin-top: ${GutterEnum.superLarge}px; */
 
   ${customMedia.greaterThan('tablet')`
     margin-top: 0;
-    margin-left: 101px;
   `}
 `
 
@@ -60,7 +62,7 @@ const Icon = styled.li`
 
 const Link = styled.a``
 
-const menuItems: string[] = ['Price', 'Works', 'Blog', 'Contact']
+const menuItems: string[] = []
 const iconItems: IconLinkProps[] = [
   {
     src: '/twitter_white.svg',
