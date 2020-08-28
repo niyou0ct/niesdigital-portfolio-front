@@ -47,7 +47,7 @@ const ContactSection: React.FC = (): JSX.Element => {
   const onSubmit = async (params: Contact): Promise<void> => {
     const response = await postEmailOnContact(params)
 
-    if (response) {
+    if (response.data.result) {
       window.alert(
         'お問い合わせありがとうございます!数営業日以内にご連絡差し上げます。しばらくお待ちくださいませ。'
       )

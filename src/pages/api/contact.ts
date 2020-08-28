@@ -7,8 +7,10 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
+    type: 'OAuth2',
     user: process.env.EMAIL_ADDRESS,
-    pass: process.env.EMAIL_PASSWORD
+    serviceClient: process.env.G_SUITE_AUTH_CLIENT_ID,
+    privateKey: process.env.G_SUITE_AUTH_PRIVATE_KEY
   }
 })
 
@@ -45,7 +47,7 @@ const sendEmailToClient = async (params: Contact): Promise<any> => {
   const message = {
     from: process.env.EMAIL_ADDRESS,
     to: email,
-    subject: `amefurashiへお問い合わせありがとうございます`,
+    subject: `Nie's Digitalへお問い合わせありがとうございます`,
     text: `${greetingText}■メールアドレス\n${email}\n\n■お名前\n${name}\n\n■お問い合わせ内容\n${detail}`
   }
 
@@ -68,6 +70,13 @@ export default async (
   }
 ) => {
   const jsonParams = JSON.parse(req.body.params) as Contact
+
+  const transporterRes: boolean = await transporter.verify()
+
+  if (!transporterRes) {
+    res.json({ result: false, clientResult: undefined, adminResult: undefined })
+  }
+
   const clientRes = await sendEmailToClient(jsonParams)
   const adminRes = await sendEmailToAdmin(jsonParams)
 
