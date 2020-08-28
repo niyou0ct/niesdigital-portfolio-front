@@ -36,14 +36,12 @@ const HeadArea: React.FC<HeadAreaProps> = (
         content="2LREya_jJnGvqyKRSVorfdRLNJAog4P9cet6wLh0CBE"
       />
       <link rel="canonical" href={url} />
-      {/* <link
-        rel="shortcut icon"
-        href="https://cdn.qiita.com/assets/favicons/public/production-4ff10c1e1e2b5fcb353ff9cafdd56c70.ico"
-      />
       <link
         rel="apple-touch-icon"
-        href="https://cdn.qiita.com/assets/favicons/public/apple-touch-icon-f9a6afad761ec2306e10db2736187c8b.png"
-      /> */}
+        type="image/png"
+        href="/apple-touch-icon-180x180.png"
+      />
+      <link rel="icon" type="image/png" href="/icon-192x192.png" />
       {links}
     </Head>
   )
