@@ -1,46 +1,51 @@
 import React from 'react'
-import styled from 'styled-components'
-import Styles, { device } from '../common/style/Styles'
+import styled, { css } from 'styled-components'
+import { device } from '../common/style/Styles'
 import MarginBottom, { MarginBottomProps } from '../atoms/MarginBottom'
 import { GutterEnum } from '../common/style/type'
 
 export type HeadingLayoutProps = {
-  color?: string
   marginBottom?: {
     sp: GutterEnum | 0
     pc: GutterEnum | 0
   }
   children?: React.ReactNode
+} & HeadingLayoutStyleType
+
+type HeadingLayoutStyleType = {
+  color?: string
 }
+
+const Heading = styled.h2`
+  font-size: 20px;
+
+  @media ${device.tablet} {
+    font-size: 2.4rem;
+  }
+
+  ${(props: HeadingLayoutStyleType) => {
+    const { color } = props
+    if (color) {
+      return css`
+        color: ${color};
+      `
+    }
+    return css``
+  }}
+`
 
 const HeadingLayout: React.FC<HeadingLayoutProps> = (
   props: HeadingLayoutProps
 ): JSX.Element => {
   const { color, marginBottom, children } = props
-  const Heading = styled.h2`
-    font-size: 20px;
-    color: ${color};
 
-    @media ${device.tablet} {
-      font-size: ${Styles.font.large};
-    }
-  `
-  const marginBottomOptions: MarginBottomProps = (() => {
-    if (marginBottom) {
-      return {
-        spSize: marginBottom.sp,
-        pcSize: marginBottom.pc
-      }
-    }
+  const marginBottomOptions: MarginBottomProps = marginBottom
+    ? { spSize: marginBottom.sp, pcSize: marginBottom.pc }
+    : { spSize: GutterEnum.small, pcSize: GutterEnum.exMedium }
 
-    return {
-      spSize: GutterEnum.small,
-      pcSize: GutterEnum.exMedium
-    }
-  })()
   return (
     <MarginBottom {...marginBottomOptions}>
-      <Heading>{children}</Heading>
+      <Heading color={color}>{children}</Heading>
     </MarginBottom>
   )
 }

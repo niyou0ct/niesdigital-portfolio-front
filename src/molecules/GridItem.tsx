@@ -1,9 +1,13 @@
 import React from 'react'
 import { GutterEnum } from '@/common/style/type'
-import styled from 'styled-components'
-import { device } from '@/common/style/Styles'
+import styled, { css } from 'styled-components'
+import { customMedia } from '@/common/style/Mixin'
 
 export type GridItemProps = {
+  children?: React.ReactNode
+} & GridItemStyleType
+
+type GridItemStyleType = {
   width: {
     sp: string
     pc: string
@@ -16,25 +20,36 @@ export type GridItemProps = {
     sp: GutterEnum | 0
     pc: GutterEnum | 0
   }
-  children?: React.ReactNode
 }
+
+const Wrap = styled.div`
+  ${(props: GridItemStyleType) => {
+    const { width, paddingLeft, paddingBottom } = props
+
+    return css`
+      width: ${width.sp};
+      padding-left: ${paddingLeft.sp}px;
+      padding-bottom: ${paddingBottom.sp}px;
+
+      ${customMedia.greaterThan('tablet')`
+        width: ${width.pc};
+        padding-left: ${paddingLeft.pc}px;
+        padding-bottom: ${paddingBottom.pc}px;
+      `}
+    `
+  }}
+`
 
 const GridItem: React.FC<GridItemProps> = (
   props: GridItemProps
 ): JSX.Element => {
   const { width, paddingLeft, paddingBottom, children } = props
-  const Wrap = styled.div`
-    width: ${width.sp};
-    padding-left: ${paddingLeft.sp}px;
-    padding-bottom: ${paddingBottom.sp}px;
 
-    @media ${device.tablet} {
-      width: ${width.pc};
-      padding-left: ${paddingLeft.pc}px;
-      padding-bottom: ${paddingBottom.pc}px;
-    }
-  `
-  return <Wrap>{children}</Wrap>
+  return (
+    <Wrap width={width} paddingLeft={paddingLeft} paddingBottom={paddingBottom}>
+      {children}
+    </Wrap>
+  )
 }
 
 export default GridItem

@@ -1,8 +1,8 @@
 import React from 'react'
-import Link from 'next/link'
 import styled from 'styled-components'
+import { customMedia } from '@/common/style/Mixin'
+import LinkTo, { LinkToProps } from '@/atoms/LinkTo'
 import LogoWithTag from '../molecules/LogoWithTag'
-import Styles, { device } from '../common/style/Styles'
 import BaseLayout from './BaseLayout'
 import { LayoutSizeEnum } from '../common/style/type'
 
@@ -18,60 +18,71 @@ const Container = styled.div`
 
 const NavList = styled.ul`
   display: flex;
-  margin-left: ${Styles.margin.medium}px !important;
+  margin-left: 32px !important;
 
-  @media ${device.tablet} {
-    margin-left: ${Styles.margin.exLarge}px !important;
-  }
+  ${customMedia.greaterThan('tablet')`
+    margin-left: 56px !important;
+  `}
 `
 
 const Nav = styled.li`
   & + & {
-    margin-left: ${Styles.margin.exSmall}px;
+    margin-left: 16px;
 
-    @media ${device.tablet} {
-      margin-left: ${Styles.margin.small}px;
-    }
+    ${customMedia.greaterThan('tablet')`
+      margin-left: 24px;
+    `}
   }
 `
 
-const LinkText = styled.a`
-  font-size: ${Styles.font.exSmall};
+const LinkText = styled.span`
+  display: block;
+  font-size: 1, 2rem;
 
-  @media ${device.tablet} {
-    margin-left: ${Styles.font.small};
-  }
+  ${customMedia.greaterThan('tablet')`
+      margin-left: 1.4rem;
+  `}
 `
+
+const navLinkItems: LinkToProps[] = [
+  {
+    href: '/price',
+    as: '/price',
+    children: <LinkText>Price</LinkText>
+  },
+  {
+    href: '/works',
+    as: '/works',
+    children: <LinkText>Works</LinkText>
+  },
+  {
+    href: '/blog',
+    as: '/blog',
+    children: <LinkText>Blog</LinkText>
+  },
+  {
+    href: '/contact',
+    as: '/contact',
+    children: <LinkText>Contact</LinkText>
+  }
+]
 
 const Header: React.FC<HeaderProps> = (): JSX.Element => {
+  const navElements: JSX.Element[] = navLinkItems.map(
+    (item: LinkToProps): JSX.Element => (
+      <Nav key={item.href}>
+        <LinkTo {...item} />
+      </Nav>
+    )
+  )
+
   return (
     <BaseLayout size={LayoutSizeEnum.LARGE}>
       <Container>
         <div>
           <LogoWithTag hasLink />
         </div>
-        <NavList>
-          <Nav>
-            <Link href="/price">
-              <LinkText>Price</LinkText>
-            </Link>
-          </Nav>
-          <Nav>
-            <Link href="/works">
-              <LinkText>Works</LinkText>
-            </Link>
-          </Nav>
-          <Nav>
-            <Link href="/blog">
-              <LinkText>Blog</LinkText>
-            </Link>
-          </Nav>
-          <Nav>
-            <Link href="/contact">
-              <LinkText>Contact</LinkText>
-            </Link>
-          </Nav>
-        </NavList>
+        <NavList>{navElements}</NavList>
       </Container>
     </BaseLayout>
   )

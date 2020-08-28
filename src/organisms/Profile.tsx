@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import Styles, { device } from '@/common/style/Styles'
 import Image from '@/atoms/Image'
 import { GutterEnum } from '@/common/style/type'
+import { customMedia } from '@/common/style/Mixin'
 import BaseLayout from './BaseLayout'
 
 const Wrap = styled.div`
   padding: 40px 0;
   background-color: #fff;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     padding: 56px 0;
-  }
+  `}
 `
 
 const Contents = styled.div`
@@ -19,10 +19,10 @@ const Contents = styled.div`
   grid-template-rows: 1fr;
   grid-template-columns: 80px 1fr;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     grid-template-rows: 1fr auto;
     grid-template-columns: 200px 1fr;
-  }
+  `}
 `
 
 const IconWrap = styled.div`
@@ -32,11 +32,11 @@ const IconWrap = styled.div`
   border-radius: 50%;
   overflow: hidden;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     width: 200px;
     height: 200px;
     grid-row: 1/3;
-  }
+  `}
 
   img {
     position: absolute;
@@ -51,27 +51,27 @@ const IconWrap = styled.div`
 const Title = styled.span`
   align-self: center;
   font-weight: bold;
-  font-size: ${Styles.font.medium};
+  font-size: 1.6rem;
   margin-left: 10px;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     align-self: flex-start;
     font-size: 20px;
     margin-left: ${GutterEnum.small}px;
-  }
+  `}
 `
 
 const Text = styled.p`
   grid-column: 1/3;
-  font-size: ${Styles.font.exSmall};
+  font-size: 1.2rem;
   margin-top: ${GutterEnum.exSmall}px;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     grid-column: 2;
     margin-top: 0;
-    font-size: ${Styles.font.small};
+    font-size: 1.4rem;
     margin-left: ${GutterEnum.small}px;
-  }
+  `}
 `
 
 const Profile: React.FC = (): JSX.Element => {

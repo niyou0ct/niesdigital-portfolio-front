@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import Styles, { device } from '@/common/style/Styles'
+import { device } from '@/common/style/Styles'
 import { GutterEnum } from '@/common/style/type'
 import Image, { ImageProps } from '@/atoms/Image'
 import MarginBottom from '@/atoms/MarginBottom'
+import { customMedia } from '@/common/style/Mixin'
 
 export type ValueItemProps = {
   title: string
@@ -16,36 +17,36 @@ const textBoxWidth: number = 674 + 56
 const Wrap = styled.div`
   position: relative;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     display: flex;
-  }
+  `}
 
   &:nth-child(2) {
-    @media ${device.tablet} {
+    ${customMedia.greaterThan('tablet')`
       flex-direction: row-reverse;
       justify-content: flex-start;
-    }
+    `}
 
     .text-box {
-      @media ${device.tablet} {
+      ${customMedia.greaterThan('tablet')`
         padding-left: 56px;
-      }
+      `}
     }
   }
 
   &:nth-child(odd) {
     .text-box {
-      @media ${device.tablet} {
+      ${customMedia.greaterThan('tablet')`
         padding-right: 56px;
-      }
+      `}
     }
   }
   & + & {
     margin-top: ${GutterEnum.superLarge}px;
 
-    @media ${device.tablet} {
+    ${customMedia.greaterThan('tablet')`
       margin-top: 150px;
-    }
+    `}
   }
 `
 
@@ -53,11 +54,11 @@ const TextBox = styled.div`
   position: relative;
   z-index: 10;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     position: static;
     width: 100%;
     max-width: ${textBoxWidth}px;
-  }
+  `}
 `
 
 const ImageBox = styled.div`
@@ -66,26 +67,26 @@ const ImageBox = styled.div`
   top: 0;
   width: 170px;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     position: static;
     width: auto;
     display: flex;
     flex-grow: 1;
     justify-content: center;
-  }
+  `}
 `
 
 const Text = styled.p`
-  font-size: ${Styles.font.small};
+  font-size: 1.4rem;
   color: #fff;
 `
 
 const Heading = styled.h3`
-  font-size: ${Styles.font.large};
+  font-size: 2.4rem;
   color: #fff;
 
   @media ${device.tablet} {
-    font-size: ${Styles.font.exLarge};
+    font-size: 3.2rem;
   }
 `
 

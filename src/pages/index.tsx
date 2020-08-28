@@ -1,11 +1,7 @@
 import React from 'react'
-import Head from 'next/head'
-import { NextPage } from 'next'
 import styled from 'styled-components'
 import ValueSection from '@/organisms/ValueSection'
-import Header from '@/organisms/Header'
 import Image from '@/atoms/Image'
-import { device } from '@/common/style/Styles'
 import MindSection from '@/organisms/MindSection'
 import ServiceSection from '@/organisms/ServiceSection'
 import PriceSection from '@/organisms/PriceSection'
@@ -15,7 +11,12 @@ import BaseLayout from '@/organisms/BaseLayout'
 import MarginBottom from '@/atoms/MarginBottom'
 import Profile from '@/organisms/Profile'
 import ContactSection from '@/organisms/ContactSection'
-import Footer from '@/organisms/Footer'
+import CommonLayout from '@/organisms/CommonLayout'
+import { customMedia } from '@/common/style/Mixin'
+
+type HomePageProps = {
+  children?: React.ReactNode
+}
 
 const Wrap = styled.div`
   background-color: #000;
@@ -33,9 +34,9 @@ const Letters = styled.div`
     width: 263px;
     margin: auto;
 
-    @media ${device.tablet} {
+    ${customMedia.greaterThan('tablet')`
       width: auto;
-    }
+    `}
   }
 `
 const LargeLogo = styled.div`
@@ -49,9 +50,9 @@ const LargeLogo = styled.div`
     width: 169px;
     margin: auto;
 
-    @media ${device.tablet} {
+    ${customMedia.greaterThan('tablet')`
       width: auto;
-    }
+    `}
   }
 `
 
@@ -70,42 +71,40 @@ const KeyVisual: React.FC = (): JSX.Element => {
   )
 }
 
-const IndexPage: NextPage = () => {
+const HomePage: React.FC<HomePageProps> = (
+  props: HomePageProps
+): JSX.Element => {
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="google-site-verification"
-          content="2LREya_jJnGvqyKRSVorfdRLNJAog4P9cet6wLh0CBE"
-        />
-      </Head>
-
-      <Header />
+    <CommonLayout
+      {...{
+        headArea: {
+          title: "Nie's Digital",
+          description:
+            'WEBやアプリのサービス企画から開発までおこないフリーランスとして活動している仁井内勇樹',
+          keyword:
+            'Nies Digital,Yuki Niiuchi,仁井内勇樹,WEB,マーケティング,戦略',
+          image: '',
+          url: 'https://niesdigital.com'
+        },
+        ...props
+      }}>
       <KeyVisual />
-
-      <main>
-        <MindSection />
-        <ValueSection />
-
-        <ContentsLayout bgColor={BgColorEnum.GREY}>
-          <BaseLayout>
-            <MarginBottom
-              spSize={GutterEnum.exLarge}
-              pcSize={GutterEnum.superLarge}>
-              <ServiceSection />
-            </MarginBottom>
-            <PriceSection />
-          </BaseLayout>
-        </ContentsLayout>
-
-        <Profile />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+      <MindSection />
+      <ValueSection />
+      <ContentsLayout bgColor={BgColorEnum.GREY}>
+        <BaseLayout>
+          <MarginBottom
+            spSize={GutterEnum.exLarge}
+            pcSize={GutterEnum.superLarge}>
+            <ServiceSection />
+          </MarginBottom>
+          <PriceSection />
+        </BaseLayout>
+      </ContentsLayout>
+      <Profile />
+      <ContactSection />
+    </CommonLayout>
   )
 }
 
-export default IndexPage
+export default HomePage

@@ -1,24 +1,40 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { customMedia } from '@/common/style/Mixin'
 import { GutterEnum } from '../common/style/type'
-import { device } from '../common/style/Styles'
 
 export type MarginBottomProps = {
+  children?: React.ReactNode
+} & MarginBottomStyleType
+
+type MarginBottomStyleType = {
   spSize: GutterEnum
   pcSize: GutterEnum
-  children?: React.ReactNode
 }
+
+const Wrap = styled.div`
+  ${(props: MarginBottomStyleType) => {
+    const { spSize, pcSize } = props
+    return css`
+      margin-bottom: ${spSize}px;
+
+      ${customMedia.greaterThan('tablet')`
+        margin-bottom: ${pcSize}px;
+      `}
+    `
+  }}
+`
+
 const MarginBottom: React.FC<MarginBottomProps> = (
   props: MarginBottomProps
 ): JSX.Element => {
   const { spSize, pcSize, children } = props
-  const Wrap = styled.div`
-    margin-bottom: ${spSize}px;
-    @media ${device.tablet} {
-      margin-bottom: ${pcSize}px;
-    }
-  `
-  return <Wrap>{children}</Wrap>
+
+  return (
+    <Wrap spSize={spSize} pcSize={pcSize}>
+      {children}
+    </Wrap>
+  )
 }
 
 export default MarginBottom

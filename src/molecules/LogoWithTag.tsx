@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
+import { customMedia } from '@/common/style/Mixin'
 import Image from '../atoms/Image'
-import { device } from '../common/style/Styles'
 
 export type LogoWithTagProps = {
   reverse?: boolean
@@ -12,9 +12,10 @@ export type LogoWithTagProps = {
 const ImageWrap = styled.div`
   width: 100%;
   min-width: 124px;
-  @media ${device.tablet} {
+
+  ${customMedia.greaterThan('tablet')`
     min-width: 200px;
-  }
+  `}
 `
 
 const LogoWithTag: React.FC<LogoWithTagProps> = (

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Styles, { device } from '../common/style/Styles'
+import { customMedia } from '@/common/style/Mixin'
 import { GutterEnum } from '../common/style/type'
 import ContentsLayout from './ContentsLayout'
 import BaseLayout from './BaseLayout'
@@ -11,19 +11,19 @@ const Wrap = styled.section`
   position: relative;
   padding-bottom: 203px;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     padding-bottom: 0px;
-  }
+  `}
 `
 
 const Text = styled.p`
-  font-size: ${Styles.font.small};
+  font-size: 1.4rem;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     position: relative;
     z-index: 10;
-    font-size: ${Styles.font.medium};
-  }
+    font-size: 1.4rem;
+  `}
 
   & + & {
     margin-top: ${GutterEnum.small}px;
@@ -33,27 +33,27 @@ const Text = styled.p`
     br {
       &:nth-child(1) {
         display: none;
-        @media ${device.tablet} {
+        ${customMedia.greaterThan('tablet')`
           display: block;
-        }
+        `}
       }
       &:nth-child(2) {
         display: none;
-        @media ${device.tablet} {
+        ${customMedia.greaterThan('tablet')`
           display: block;
-        }
+        `}
       }
       &:nth-child(4) {
         display: none;
-        @media ${device.tablet} {
+        ${customMedia.greaterThan('tablet')`
           display: block;
-        }
+        `}
       }
       &:nth-child(6) {
         display: none;
-        @media ${device.tablet} {
+        ${customMedia.greaterThan('tablet')`
           display: block;
-        }
+        `}
       }
     }
   }
@@ -64,22 +64,24 @@ const TextSvgFirst = styled.div`
   right: 0;
   bottom: 92px;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     bottom: 97px;
-  }
+  `}
 
   img {
     &:nth-child(1) {
       display: block;
-      @media ${device.tablet} {
+
+      ${customMedia.greaterThan('tablet')`
         display: none;
-      }
+      `}
     }
     &:nth-child(2) {
       display: none;
-      @media ${device.tablet} {
+
+      ${customMedia.greaterThan('tablet')`
         display: block;
-      }
+      `}
     }
   }
 `
@@ -91,15 +93,17 @@ const TextSvgSecond = styled.div`
   img {
     &:nth-child(1) {
       display: block;
-      @media ${device.tablet} {
+
+      ${customMedia.greaterThan('tablet')`
         display: none;
-      }
+      `}
     }
     &:nth-child(2) {
       display: none;
-      @media ${device.tablet} {
+
+      ${customMedia.greaterThan('tablet')`
         display: block;
-      }
+      `}
     }
   }
 `

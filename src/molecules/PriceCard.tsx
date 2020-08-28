@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Styles, { device } from '@/common/style/Styles'
+import Styles from '@/common/style/Styles'
 import MarginBottom from '@/atoms/MarginBottom'
 import { GutterEnum } from '@/common/style/type'
+import { customMedia } from '@/common/style/Mixin'
 
 export type PriceCardProps = {
   title: string
@@ -15,9 +16,9 @@ const Wrap = styled.div`
   padding: 16px;
   border-radius: ${Styles.border.radius};
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     padding: 20px 24px;
-  }
+  `}
 
   & + & {
     margin-top: ${GutterEnum.small}px;
@@ -25,25 +26,25 @@ const Wrap = styled.div`
 `
 
 const Title = styled.h3`
-  font-size: ${Styles.font.small};
+  font-size: 1.4rem;
 
-  @media ${device.tablet} {
-    font-size: ${Styles.font.medium};
-  }
+  ${customMedia.greaterThan('tablet')`
+    font-size: 1.6rem;
+  `}
 `
 
 const Text = styled.p`
-  font-size: ${Styles.font.small};
+  font-size: 1.4rem;
   margin-bottom: ${GutterEnum.exSmall}px;
 `
 
 const PriceBox = styled.div`
-  font-size: ${Styles.font.small};
+  font-size: 1.4rem;
   text-align: right;
 `
 
 const PriceText = styled.span`
-  font-size: ${Styles.font.small};
+  font-size: 1.4rem;
 `
 
 const PriceCard: React.FC<PriceCardProps> = (

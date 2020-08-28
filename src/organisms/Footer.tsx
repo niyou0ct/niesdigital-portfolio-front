@@ -3,8 +3,8 @@ import { BgColorEnum, LayoutSizeEnum, GutterEnum } from '@/common/style/type'
 import LogoWithTag from '@/molecules/LogoWithTag'
 import MarginBottom from '@/atoms/MarginBottom'
 import styled from 'styled-components'
-import Styles, { device } from '@/common/style/Styles'
 import Image, { ImageProps } from '@/atoms/Image'
+import { customMedia } from '@/common/style/Mixin'
 import ContentsLayout from './ContentsLayout'
 import BaseLayout from './BaseLayout'
 
@@ -13,29 +13,29 @@ type IconLinkProps = {
 } & ImageProps
 
 const Wrap = styled.div`
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     display: flex;
     align-items: flex-end;
-  }
+  `}
 `
 
 const List = styled.ul`
   display: flex;
 `
 const Item = styled.li`
-  font-size: ${Styles.font.small};
+  font-size: 1.4rem;
   color: #fff;
 
-  @media ${device.tablet} {
-    font-size: ${Styles.font.medium};
-  }
+  ${customMedia.greaterThan('tablet')`
+    font-size: 1.6rem;
+  `}
 
   & + & {
     margin-left: ${GutterEnum.small}px;
 
-    @media ${device.tablet} {
+    ${customMedia.greaterThan('tablet')`
       margin-left: ${GutterEnum.exMedium}px;
-    }
+    `}
   }
 `
 
@@ -44,10 +44,10 @@ const IconList = styled.ul`
   justify-content: flex-end;
   margin-top: ${GutterEnum.superLarge}px;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     margin-top: 0;
     margin-left: 101px;
-  }
+  `}
 `
 
 const Icon = styled.li`

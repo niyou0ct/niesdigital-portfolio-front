@@ -1,9 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { customMedia } from '@/common/style/Mixin'
 import { GutterEnum, BgColorEnum } from '../common/style/type'
-import { device } from '../common/style/Styles'
 
 export type ContentsLayoutProps = {
+  children?: React.ReactNode
+} & ContentsLayoutStyleType
+
+type ContentsLayoutStyleType = {
   paddingTop?: {
     sp: GutterEnum
     pc: GutterEnum
@@ -13,25 +17,38 @@ export type ContentsLayoutProps = {
     pc: GutterEnum
   }
   bgColor?: BgColorEnum
-  children?: React.ReactNode
 }
+
+const Wrap = styled.div`
+  ${(props: ContentsLayoutStyleType) => {
+    const { paddingTop, paddingBottom, bgColor } = props
+
+    return css`
+      background-color: ${bgColor};
+      padding-top: ${paddingTop?.sp}px;
+      padding-bottom: ${paddingBottom?.sp}px;
+
+      ${customMedia.greaterThan('tablet')`
+        padding-top: ${paddingTop?.pc}px;
+        padding-bottom: ${paddingBottom?.pc}px;
+      `}
+    `
+  }}
+`
 
 const ContentsLayout: React.FC<ContentsLayoutProps> = (
   props: ContentsLayoutProps
 ): JSX.Element => {
   const { paddingTop, paddingBottom, bgColor, children } = props
 
-  const Wrap = styled.div`
-    background-color: ${bgColor};
-    padding-top: ${paddingTop?.sp}px;
-    padding-bottom: ${paddingBottom?.sp}px;
-    @media ${device.tablet} {
-      padding-top: ${paddingTop?.pc}px;
-      padding-bottom: ${paddingBottom?.pc}px;
-    }
-  `
-
-  return <Wrap>{children}</Wrap>
+  return (
+    <Wrap
+      paddingTop={paddingTop}
+      paddingBottom={paddingBottom}
+      bgColor={bgColor}>
+      {children}
+    </Wrap>
+  )
 }
 
 ContentsLayout.defaultProps = {

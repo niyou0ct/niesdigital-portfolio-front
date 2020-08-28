@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { GutterEnum } from '@/common/style/type'
-import Styles, { device } from '@/common/style/Styles'
 import PriceCard, { PriceCardProps } from '@/molecules/PriceCard'
 import MarginBottom from '@/atoms/MarginBottom'
+import { customMedia } from '@/common/style/Mixin'
 import HeadingLayout, { HeadingLayoutProps } from '../molecules/HeadingLayout'
 
 const Wrap = styled.section``
@@ -16,10 +16,11 @@ const headingLayoutOptions: HeadingLayoutProps = {
 }
 
 const Lead = styled.p`
-  font-size: ${Styles.font.small};
-  @media ${device.tablet} {
-    font-size: ${Styles.font.medium};
-  }
+  font-size: 1.4rem;
+
+  ${customMedia.greaterThan('tablet')`
+    font-size: 1.6rem;
+  `}
 `
 
 const priceCardOptions: PriceCardProps[] = [

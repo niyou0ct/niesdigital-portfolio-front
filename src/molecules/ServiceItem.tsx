@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Styles, { device } from '@/common/style/Styles'
+import Styles from '@/common/style/Styles'
 import MarginBottom from '@/atoms/MarginBottom'
 import { GutterEnum } from '@/common/style/type'
+import { customMedia } from '@/common/style/Mixin'
 
 export type ServiceItemProps = {
   title: string
@@ -15,34 +16,34 @@ const Wrap = styled.div`
   padding: 16px;
   border-radius: ${Styles.border.radius};
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     padding: 24px 32px;
     height: 100%;
-  }
+  `}
 `
 
 const Title = styled.h3`
-  font-size: ${Styles.font.medium};
+  font-size: 1.6rem;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     font-size: 20px;
-  }
+  `}
 `
 
 const Lead = styled.div`
-  font-size: ${Styles.font.exSmall};
+  font-size: 1.2rem;
 
-  @media ${device.tablet} {
-    font-size: ${Styles.font.medium};
-  }
+  ${customMedia.greaterThan('tablet')`
+    font-size: 1.6rem;
+  `}
 `
 
 const Text = styled.p`
-  font-size: ${Styles.font.exSmall};
+  font-size: 1.2rem;
 
-  @media ${device.tablet} {
-    font-size: ${Styles.font.small};
-  }
+  ${customMedia.greaterThan('tablet')`
+    font-size: 1.4rem;
+  `}
 `
 
 const ServiceItem: React.FC<ServiceItemProps> = (

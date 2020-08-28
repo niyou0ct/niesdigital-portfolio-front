@@ -8,10 +8,9 @@ import Button from '@/atoms/Button'
 import styled from 'styled-components'
 import MarginBottom from '@/atoms/MarginBottom'
 import Image from '@/atoms/Image'
-import { device } from '@/common/style/Styles'
+import { customMedia } from '@/common/style/Mixin'
 import ContentsLayout from './ContentsLayout'
 import BaseLayout from './BaseLayout'
-import Form from './Form'
 
 const Wrap = styled.div`
   position: relative;
@@ -29,9 +28,9 @@ const ImageWrap = styled.span`
   right: 0;
   width: 184px;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     width: 362px;
-  }
+  `}
 `
 
 const ButtonWrap = styled.div`
@@ -73,14 +72,14 @@ const ContactSection: React.FC = (): JSX.Element => {
             <Image src="/letter.svg" alt="letter" />
           </ImageWrap>
           <FormBox>
-            <Form>
+            <form>
               <MarginBottom spSize={GutterEnum.small} pcSize={GutterEnum.small}>
                 {formItemElements}
               </MarginBottom>
               <ButtonWrap>
                 <Button>送信</Button>
               </ButtonWrap>
-            </Form>
+            </form>
           </FormBox>
         </Wrap>
       </BaseLayout>

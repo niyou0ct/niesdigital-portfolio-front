@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { customMedia } from '@/common/style/Mixin'
 import { LayoutSizeEnum } from '../common/style/type'
-import { device } from '../common/style/Styles'
 
 export type BaseLayoutProps = {
   size?: LayoutSizeEnum
@@ -11,9 +11,9 @@ export type BaseLayoutProps = {
 const Wrap = styled.div`
   padding: 0 12px;
 
-  @media ${device.tablet} {
+  ${customMedia.greaterThan('tablet')`
     padding: 0 15px;
-  }
+  `}
 `
 
 const Inner = styled.div`
