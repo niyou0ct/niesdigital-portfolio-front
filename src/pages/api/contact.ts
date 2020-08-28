@@ -45,7 +45,7 @@ const sendEmailToClient = async (params: Contact): Promise<any> => {
   const message = {
     from: process.env.EMAIL_ADDRESS,
     to: email,
-    subject: `amefurashiへお問い合わせありがとうございます`,
+    subject: `Nie's Digitalへお問い合わせありがとうございます`,
     text: `${greetingText}■メールアドレス\n${email}\n\n■お名前\n${name}\n\n■お問い合わせ内容\n${detail}`
   }
 
