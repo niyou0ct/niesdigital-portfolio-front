@@ -35,36 +35,36 @@ const Nav = styled.li`
   }
 `
 
-const LinkText = styled.span`
-  display: block;
-  font-size: 1, 2rem;
+// const LinkText = styled.span`
+//   display: block;
+//   font-size: 1, 2rem;
 
-  ${customMedia.greaterThan('tablet')`
-      margin-left: 1.4rem;
-  `}
-`
+//   ${customMedia.greaterThan('tablet')`
+//       margin-left: 1.4rem;
+//   `}
+// `
 
 const navLinkItems: LinkToProps[] = [
-  {
-    href: '/price',
-    as: '/price',
-    children: <LinkText>Price</LinkText>
-  },
-  {
-    href: '/works',
-    as: '/works',
-    children: <LinkText>Works</LinkText>
-  },
-  {
-    href: '/blog',
-    as: '/blog',
-    children: <LinkText>Blog</LinkText>
-  },
-  {
-    href: '/contact',
-    as: '/contact',
-    children: <LinkText>Contact</LinkText>
-  }
+  // {
+  //   href: '/price',
+  //   as: '/price',
+  //   children: <LinkText>Price</LinkText>
+  // },
+  // {
+  //   href: '/works',
+  //   as: '/works',
+  //   children: <LinkText>Works</LinkText>
+  // },
+  // {
+  //   href: '/blog',
+  //   as: '/blog',
+  //   children: <LinkText>Blog</LinkText>
+  // },
+  // {
+  //   href: '/contact',
+  //   as: '/contact',
+  //   children: <LinkText>Contact</LinkText>
+  // }
 ]
 
 const Header: React.FC<HeaderProps> = (): JSX.Element => {
