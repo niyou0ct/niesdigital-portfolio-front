@@ -1,14 +1,17 @@
 /* eslint-disable import/prefer-default-export */
 import nodemailer from 'nodemailer'
 import { Contact } from '@/models/Contact'
+import * as key from '../../../GSuiteAuth.json'
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   secure: true,
   auth: {
+    type: 'OAuth2',
     user: process.env.EMAIL_ADDRESS,
-    pass: process.env.EMAIL_PASSWORD
+    serviceClient: key.client_id,
+    privateKey: key.private_key
   }
 })
 
@@ -68,6 +71,13 @@ export default async (
   }
 ) => {
   const jsonParams = JSON.parse(req.body.params) as Contact
+
+  const transporterRes: boolean = await transporter.verify()
+
+  if (!transporterRes) {
+    res.json({ result: false, clientResult: undefined, adminResult: undefined })
+  }
+
   const clientRes = await sendEmailToClient(jsonParams)
   const adminRes = await sendEmailToAdmin(jsonParams)
 
