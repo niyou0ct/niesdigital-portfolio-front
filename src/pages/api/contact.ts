@@ -1,18 +1,17 @@
-/* eslint-disable import/prefer-default-export */
-// import nodemailer from 'nodemailer'
+import nodemailer from 'nodemailer'
 import { Contact } from '@/models/Contact'
 
-// const transporter = nodemailer.createTransport({
-//   host: 'smtp.gmail.com',
-//   port: 465,
-//   secure: true,
-//   auth: {
-//     type: 'OAuth2',
-//     user: process.env.EMAIL_ADDRESS,
-//     serviceClient: process.env.G_SUITE_AUTH_CLIENT_ID,
-//     privateKey: process.env.G_SUITE_AUTH_PRIVATE_KEY
-//   }
-// })
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+    type: 'OAuth2',
+    user: process.env.EMAIL_ADDRESS,
+    serviceClient: process.env.G_SUITE_AUTH_CLIENT_ID,
+    privateKey: process.env.G_SUITE_AUTH_PRIVATE_KEY
+  }
+})
 
 /**
  *
@@ -71,7 +70,7 @@ export default async (
 ) => {
   const jsonParams = JSON.parse(req.body.params) as Contact
 
-  // const transporterRes: boolean = await transporter.verify()
+  const transporterRes: boolean = await transporter.verify()
 
   // if (!transporterRes) {
   //   res.json({ result: false, clientResult: undefined, adminResult: undefined })
@@ -80,5 +79,9 @@ export default async (
   // const clientRes = await sendEmailToClient(jsonParams)
   // const adminRes = await sendEmailToAdmin(jsonParams)
 
-  res.json({ result: true, clientResult: jsonParams, adminResult: jsonParams })
+  res.json({
+    result: true,
+    clientResult: jsonParams,
+    adminResult: transporterRes
+  })
 }
